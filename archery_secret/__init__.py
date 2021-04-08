@@ -23,11 +23,15 @@ class Secret:
         )
     )
     __argon = PasswordHasher()
+    __header = __argon.hash(
+        getenv(
+            'ARCHERY_PERSON_SECRET'
+        )
+    )[:32]
 
     @property
     def randomic(
-        self: object,
-        size: int = 36
+        self: object
     ) -> str:
         """
             Generates randomic keys.
@@ -43,6 +47,9 @@ class Secret:
         """
         return self.__argon.hash(
             secret
+        ).replace(
+            self.__header,
+            ''
         )
 
     def verify(
@@ -55,7 +62,8 @@ class Secret:
         """
         try:
             result = self.__argon.verify(
-                hash, secret
+                self.__header + hash,
+                secret
             )
         except InvalidHash:
             return False

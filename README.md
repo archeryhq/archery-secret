@@ -27,7 +27,5 @@ Before using the module, it is necessary to create an environment variable *ARCH
 >>> hash
 '$argon2id$v=19$m=102400,t=2,p=8$DxKq0YC4ICc6x6gsn5L6DA$2gFfRH6lYqIaI01nAwKcMQ'
 >>> secret.verify(hash, passphrase)
-
-
-
+True
 ```
