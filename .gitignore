@@ -1,5 +1,6 @@
 .env
 .git
-.pytest_cache
+.gitignore
+.ipynb_checkpoints
 .venv
 poetry.lock

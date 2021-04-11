@@ -34,7 +34,7 @@ cryptography = "^3.4.7"
 python-dotenv = "^0.17.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.3"
+jupyterlab = "^3.0.13"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

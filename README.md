@@ -4,8 +4,6 @@ Generates, encrypt, decrypt and verify secrets.
 
 [Github](https://github.com/archeryhq/archery-secret)
 
-[Pipy](https://pypi.org/project/archery-secret/)
-
 ## How to use
 
 Before using the module, it is necessary to create an environment variable *ARCHERY_PERSON_SECRET*, which can be inside an .env file inside the project.This key must be 32 url-safe base64-encoded bytes.

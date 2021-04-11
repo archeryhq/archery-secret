@@ -1,11 +1,10 @@
-__author__ = 'Enio Climaco Sales Junior <eniocsjunior@gmail.com>'
-__version__ = '0.1.0'
 from dotenv import load_dotenv
 from os import getenv
 from cryptography.fernet import Fernet
 from argon2 import PasswordHasher
 from argon2.exceptions import (
-    InvalidHash
+    InvalidHash,
+    VerifyMismatchError
 )
 
 
@@ -67,6 +66,8 @@ class Secret:
             )
         except InvalidHash:
             return False
+        except VerifyMismatchError:
+            return False
         return result
 
     def encrypt(
@@ -89,10 +90,10 @@ class Secret:
         """
             Decrypt messages.
         """
-        value = message if isinstance(
-            message,
-            bytes
-        ) else message.encode()
         return self.__fernet.decrypt(
-            value
+            message if isinstance(
+                message,
+                bytes
+            ) else message.encode()
         ).decode()
+
